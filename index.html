@@ -1,11 +1,3 @@
-<!--
-  Aluno 1: Jennifer Gabriely
-  Aluno 2: Maysa
-  Aluno 3: Ana Clara
-  Aluno 4: Martie
-  Aluno 5: Victória
--->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -73,6 +65,31 @@
             font-size: 1.25rem;
             font-weight: bold;
         }
+        
+        /* Estilos do carrossel */
+        .carousel-item {
+            height: 32rem;
+            background-color: #faf0e2;
+        }
+        
+        .carousel-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 32rem;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            bottom: 3rem;
+            z-index: 10;
+            color: #000;
+        }
+        
+        .carousel-indicators button {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 
@@ -107,6 +124,41 @@
                 </div>
             </div>
         </section>
+        
+        <!-- CARROSSEL -->
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/body splash.png"d-block w-100" alt="Promoção de Verão">
+                    <div class="carousel-caption text-start">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/blush.png" class="d-block w-100" alt="Novos Produtos">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/kit skin care.png" class="d-block w-100" alt="Frete Grátis">
+                    <div class="carousel-caption text-end">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+
         <div class="d-flex justify-content-between align-items-center"
             style="height: 200px; background-color: #faf0e2;">
             <img src="img/banner.png" alt="Banner Ecommerce"
@@ -114,7 +166,6 @@
             <img src="img/logo_fim.png" alt="Logo Bella Dona"
                 style="max-height: 100%; max-width: 45%; object-fit: contain;" />
         </div>
-
     </header>
 
     <!-- NAVBAR -->
