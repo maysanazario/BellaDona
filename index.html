@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BellaDona Cosmeticos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .bg-orange {
+            background-color: #f8a99c;
+        }
+
+        .bg-of2 {
+            background-color: #f28c7d;
+        }
+
+        .text-of2 {
+            color: black;
+        }
+
+        .navbar-nav .nav-link {
+            transition: all 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            object-fit: contain;
+            padding: 15px;
+        }
+
+        .price {
+            color: #dc3545;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <section class="header-main py-3 bg-orange">
+            <div class="container">
+                <div class="row align-items-center g-3">
+                    <div class="col-lg-6">
+                        <form class="d-flex">
+                            <input type="search" class="form-control" placeholder="Localizar produtos"
+                                style="border-radius: 15px;" />
+                            <button class="btn btn-primary ms-2"
+                                style="background: #dc3545; border: #dc3545; border-radius: 15px;">
+                                <i class="fas fa-search" style="background: #dc3545;"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="dropdown text-end">
+                            <a href="#" class="text-dark text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown">
+                                <i class="fas fa-user me-2"></i>Olá, Visitante!
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#" data-page="login">Login</a></li>
+                                <li><a class="dropdown-item" href="#">Registrar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="d-flex justify-content-between align-items-center"
+            style="height: 200px; background-color: #faf0e2;">
+            <img src="img/banner.png" alt="Banner Ecommerce"
+                style="max-height: 100%; max-width: 45%; object-fit: contain;" />
+            <img src="img/logo_fim.png" alt="Logo Bella Dona"
+                style="max-height: 100%; max-width: 45%; object-fit: contain;" />
+        </div>
+
+    </header>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-of2">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-of2" href="#" data-page="catalog">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-of2" href="#" data-page="cart">Carrinho</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-of2" href="#" data-page="checkout">Pagamento</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="dynamicContent">
+                        <!-- O conteúdo dinâmico será carregado aqui -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-of2 text-of2 py-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 BellaDona</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- TEMPLATES -->
+    <template id="catalog-template">
+        <section class="py-5">
+            <div class="container">
+                <h2 class="mb-4 text-center">Nossos Produtos</h2>
+                <div class="row g-4">
+                    <!-- Produto 1 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/base.png" class="card-img-top product-image" alt="Produto 1" />
+                            <div class="card-body">
+                                <h5 class="card-title">Base Líquida BellaDona</h5>
+                                <p class="card-text">Uma paleta versátil com 37 tons únicos, perfeita para harmonizar
+                                    projetos criativos. Variando de tons suaves e neutros a cores intensas e vibrantes,
+                                    essa base oferece equilíbrio e profundidade para designs, ilustrações e identidades
+                                    visuais. Ideal para quem busca diversidade cromática e combinações sofisticadas.
+                                    <br>
+
+                                    🎨 37 variações | 🌈 Harmonia garantida | ✨ Flexível para qualquer estilo
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 63,72</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 2 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/batom liquido.png" class="card-img-top product-image" alt="Produto 2" />
+                            <div class="card-body">
+                                <h5 class="card-title">Batom Liquido BellaDona</h5>
+                                <p class="card-text">Um batom líquido com 17 tons exclusivos, desde nudes delicados até
+                                    vermelhos intensos e cores ousadas. Textura ultrapigmentada, acabamento matte ou
+                                    brilhante (à escolha) e fórmula leve, de longa duração, que não resseca os lábios.
+                                    <br>
+
+                                    💄 17 cores vibrantes | ⏳ Resistente | 🌟 Hidratante e confortável
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 33,72</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/Mascara de Cílios.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Mascara de Cílios</h5>
+                                <p class="card-text">Cílios instantaneamente volumosos, alongados e definidos com um
+                                    único passe. Fórmula ultrapigmentada e escova anatômica que modela sem grudar.
+                                    Resistente, sem borrar e com acabamento super preto. <br>
+
+                                    ✨ Volume extremo | ⏳ Duração 24h | 🌿 Hipoonalergênica</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 50,00</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 4 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/kit paleta colorida - carnaval.png" class="card-img-top product-image"
+                                alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Paleta Carnaval</h5>
+                                <p class="card-text">Ultra-pigmentados – de neons vibrantes a pastéis delicados, com
+                                    acabamentos metálicos, mattes e perolados. Formulação cremosa e blendável, perfeita
+                                    para make artística, editoriais ou looks ousados. <br>
+
+                                    🌈 37 cores intensas | ✨ Multifuncional (rosto, olhos, lábios) | 🌿 Vegana e
+                                    cruelty-free</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 59,90</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 5 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/kit skin care.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Kit Skin Care</h5>
+                                <p class="card-text">🌿 Vegano | Sem parabenos | Dermatologicamente testado <br>
+
+                                    Para uma rotina simples, mas poderosa! 💧🌟</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 209,00</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 6 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/kit banho.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Kit Banho Premium</h5>
+                                <p class="card-text">
+                                    🧼 Gel de Banho Luxuoso <br>
+                                    💎 Esfoliante Corporal Diamante Negro <br>
+                                    🌹 Óleo Corporal Hidratante <br>
+                                    💎 VIP Treatment: Cada detalhe pensado para você se sentir renovado(a) e mimado(a).
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 109,00</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 7 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/body splash.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Body Splash</h5>
+                                <p class="card-text">Hidratação leve com aloe vera <br>
+
+                                    Fixaçāo prolongada (4-6h) <br>
+
+                                    Vegano e sem álcool ressecante <br>
+
+                                    Perfeito para renovar seu humor em um spray! 💫.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 49,90</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 8 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/pincel.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Kit Pinceis</h5>
+                                <p class="card-text">✅ Cerdas hipoalergênicas (não soltam fios). <br>
+                                    ✅ Cabo ergonômico (controle total). <br>
+                                    ✅ Vegan & cruelty-free. <br>
+
+                                    Sua make, sua arte com as ferramentas certas! 💖</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 79,00</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 9 -->
+                    <div class="col-md-4">
+                        <div class="card product-card h-100">
+                            <img src="img/blush.png" class="card-img-top product-image" alt="Produto 3" />
+                            <div class="card-body">
+                                <h5 class="card-title">Blush</h5>
+                                <p class="card-text">Fórmula blendável (não mancha nem acumula)
+                                    Pigmentação buildável (do soft ao impactante)
+                                    12h de fixação com acabamento matte-satinado <br>
+                                    🌿 Livre de óleos | Vegano | 5g cada
+
+                                    Troque de personalidade em um pincelada! 💕</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">R$ 69,00</span>
+                                    <button class="btn btn-primary"
+                                        style="background: #dc3545; border: #dc3545;">Comprar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="login-template">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="login-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="password" required />
+                            </div>
+                            <button type="submit" class="btn btn-primary"
+                                style="background: #dc3545; border: #dc3545;">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="cart-template">
+        <h2 class="mb-4">Seu Carrinho</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Produto 1</td>
+                            <td>R$ 199,99</td>
+                            <td><input type="number" class="form-control" value="1" min="1" /></td>
+                            <td>R$ 199,99</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Resumo do Pedido</h5>
+                        <dl class="row">
+                            <dt class="col-6">Subtotal:</dt>
+                            <dd class="col-6 text-end">R$ 199,99</dd>
+                            <dt class="col-6">Frete:</dt>
+                            <dd class="col-6 text-end">R$ 15,00</dd>
+                            <dt class="col-6">Total:</dt>
+                            <dd class="col-6 text-end"><strong>R$ 214,99</strong></dd>
+                        </dl>
+                        <button class="btn btn-success" style="background: #dc3545; border: #dc3545;">Finalizar
+                            Compra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Template CheckOut -->
+    <template id="checkout-template">
+        <main class="my-5">
+            <div class="container">
+                <div class="py-5 text-center">
+                    <h2>Finalizar Compra</h2>
+                    <p class="lead">Por favor revise suas informações antes de concluir o pedido.</p>
+                </div>
+
+                <div class="row g-5">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3" style="color: #dc3545;">
+                            <span class="text-primary" style="color: #dc3545;">Seu carrinho</span>
+                            <span class="badge bg-primary rounded-pill" style="background: #dc3545;">3</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">Smartphone Premium</h6>
+                                    <small class="text-muted">Quantidade: 1</small>
+                                </div>
+                                <span class="text-muted">R$ 4.599,00</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">Fone Bluetooth</h6>
+                                    <small class="text-muted">Quantidade: 2</small>
+                                </div>
+                                <span class="text-muted">R$ 1.798,00</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Subtotal</span>
+                                <strong>R$ 6.397,00</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Frete</span>
+                                <strong>R$ 25,00</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total</span>
+                                <strong>R$ 6.422,00</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">Informações de Entrega</h4>
+                        <form class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor insira seu nome.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="lastName" class="form-label">Sobrenome</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor insira seu sobrenome.
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="voce@exemplo.com"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor insira um email válido.
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Endereço</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Rua, número"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Por favor insira seu endereço.
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="address2" class="form-label">Complemento <span
+                                            class="text-muted">(Opcional)</span></label>
+                                    <input type="text" class="form-control" id="address2"
+                                        placeholder="Apartamento ou casa">
+                                </div>
+
+                                <div class="col-md-5">
+                                    <label for="country" class="form-label">País</label>
+                                    <select class="form-select" id="country" required>
+                                        <option value="">Escolha...</option>
+                                        <option>Brasil</option>
+                                        <option>Portugal</option>
+                                        <option>Outro</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor selecione um país.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="state" class="form-label">Estado</label>
+                                    <select class="form-select" id="state" required>
+                                        <option value="">Escolha...</option>
+                                        <option>São Paulo</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>Minas Gerais</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor selecione um estado.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="zip" class="form-label">CEP</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        CEP é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h4 class="mb-3">Pagamento</h4>
+
+                            <div class="my-3">
+                                <div class="form-check">
+                                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input"
+                                        checked required>
+                                    <label class="form-check-label" for="credit">Cartão de crédito</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
+                                        required>
+                                    <label class="form-check-label" for="debit">Cartão de débito</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
+                                        required>
+                                    <label class="form-check-label" for="paypal">PayPal</label>
+                                </div>
+                            </div>
+
+                            <div class="row gy-3">
+                                <div class="col-md-6">
+                                    <label for="cc-name" class="form-label">Nome no cartão</label>
+                                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                    <small class="text-muted">Nome completo como mostrado no cartão</small>
+                                    <div class="invalid-feedback">
+                                        Nome no cartão é obrigatório
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="cc-number" class="form-label">Número do cartão</label>
+                                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Número do cartão é obrigatório
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="cc-expiration" class="form-label">Validade</label>
+                                    <input type="text" class="form-control" id="cc-expiration" placeholder="MM/AA"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Data de validade é obrigatória
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="cc-cvv" class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Código de segurança é obrigatório
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <button class="w-100 btn btn-primary btn-lg" type="submit"
+                                style="background: #dc3545;">Finalizar Compra</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            // Validação do formulário
+            (function () {
+                'use strict'
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
+    </template>
+
+    <!-- JavaScript SPA Controller -->
+    <script>
+        function loadTemplate(templateId) {
+            const container = document.getElementById('dynamicContent');
+            const template = document.getElementById(templateId);
+            container.innerHTML = '';
+            container.appendChild(template.content.cloneNode(true));
+
+            // Reinicializa os tooltips e dropdowns do Bootstrap
+            setTimeout(() => {
+                const dropdowns = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]');
+            }, 50);
+        }
+
+        function handleNavigation(e) {
+            e.preventDefault();
+            const page = e.target.dataset.page;
+            if (page) {
+                loadTemplate(`${page}-template`);
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+                if (e.target.classList.contains('nav-link')) {
+                    e.target.classList.add('active');
+                }
+
+            }
+        }
+
+
+        function initApp() {
+            loadTemplate('catalog-template');
+            document.querySelectorAll('[data-page]').forEach(link => {
+                link.addEventListener('click', handleNavigation);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+
+</html>
