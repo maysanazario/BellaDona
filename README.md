@@ -138,7 +138,7 @@ start index.html  # Windows
 
 <div align="center">
   
-| <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Ana+Clara" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Jennifer" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Martie" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Maysa" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Victória" width="60" height="60" style="border-radius: 50%"> |
+| <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Ana+Clara" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Jennifer" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Martie" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Maysa" width="60" height="60" style="border-radius: 50%"> | <img src="https://ui-avatars.com/api/?background=f8a99c&color=fff&bold=true&size=80&name=Victoria" width="60" height="60" style="border-radius: 50%"> |
 |---|---|---|---|---|
 | **Ana Clara Madeira de Gois** | **Jennifer Gabriely Lopes dos Santos** | **Martie Bello Silva** | **Maysa Alexandre Nazario** | **Victória Heloísa de Melo Teixeira** |
 
