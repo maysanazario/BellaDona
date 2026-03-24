@@ -156,7 +156,7 @@ start index.html  # Windows
 | 📚 **Curso** | Desenvolvimento de Software Multiplataforma (DSM) |
 | 💻 **Disciplina** | Desenvolvimento Web I |
 | 📍 **Semestre** | 1º Semestre |
-| 📅 **Período** | 2024 |
+| 📅 **Período** | 2025 |
 | 🎯 **Tipo** | Atividade Prática — Front-end |
 
 </div>
